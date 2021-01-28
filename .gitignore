@@ -62,3 +62,6 @@ typings/
 
 # demo
 demo/
+
+# Mac OS files
+.DS_Store
