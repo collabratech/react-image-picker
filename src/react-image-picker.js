@@ -42,6 +42,8 @@ class ImagePicker extends Component {
       
       onPick(multiple ? pickedImageToArray : pickedImageToArray[0])
     }
+
+    return pickedImage.size
   }
 
   renderImage(image, i) {
