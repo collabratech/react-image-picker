@@ -41,10 +41,7 @@ class ImagePicker extends Component {
     if (newerPickedImage) {
       this.setState({picked: newerPickedImage})
 
-      const pickedImageToArray = []
-      newerPickedImage.map((image, i) => pickedImageToArray.push({src: image, value: i}))
-
-      onPick(multiple ? pickedImageToArray : pickedImageToArray[0])
+      onPick(multiple ? newerPickedImage : newerPickedImage[0])
     }
 
     return pickedImage.length
