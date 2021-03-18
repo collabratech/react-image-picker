@@ -9,8 +9,10 @@ class ImagePicker extends Component {
   constructor(props) {
     super(props)
 
+    const selectedImages = props.images.filter(image => image.selected === true);
+
     this.state = {
-      picked: [],
+      picked: selectedImages || [],
     }
 
     this.handleImageClick = this.handleImageClick.bind(this)
