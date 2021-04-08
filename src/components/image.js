@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 
 const ImageStyle = (width, height) => {
   return {
-    width,
-    height,
     objectFit: "cover"
   }
 }
