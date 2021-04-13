@@ -40,6 +40,16 @@ class Demo extends Component {
   }
 
   render() {
+    const preselected = imageList.map((image, i) => {
+      let obj = {src: image, value: i};
+
+      if (i % 2 === 0) {
+        obj.selected = true;
+      }
+
+      return obj;
+    })
+
     return (
       <div>
         <h1>React Image Picker</h1>
@@ -49,7 +59,7 @@ class Demo extends Component {
           onPick={this.onPickImage.bind(this)}
         />
         <textarea rows="4" cols="100" value={this.state.image && JSON.stringify(this.state.image)} disabled/>
-        
+
         <h3>Multiple Select</h3>
         <ImagePicker
           images={imageList.map((image, i) => ({src: image, value: i}))}
@@ -68,6 +78,15 @@ class Demo extends Component {
         />
         <textarea rows="4" cols="100" value={this.state.max_images && JSON.stringify(this.state.max_images)} disabled/>
         <textarea rows="4" cols="100" value={this.state.max_message && JSON.stringify(this.state.max_message)} disabled/>
+
+        <h3>PreSelect Images</h3>
+        <ImagePicker
+          images={preselected}
+          onPick={this.onPickImages.bind(this)}
+          multiple
+        />
+        <textarea rows="4" cols="100" value={this.state.images && JSON.stringify(this.state.images)} disabled/>
+
       </div>
     )
   }

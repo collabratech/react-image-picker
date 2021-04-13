@@ -8,26 +8,32 @@ import Image from './components/image'
 class ImagePicker extends Component {
   constructor(props) {
     super(props)
+
+    const selectedImages = props.images.filter(image => image.selected === true);
+
     this.state = {
-      picked: Map()
+      picked: selectedImages || [],
     }
+
     this.handleImageClick = this.handleImageClick.bind(this)
     this.renderImage = this.renderImage.bind(this)
   }
 
   handleImageClick(image) {
     const { multiple, onPick, maxPicks, onMaxPicks } = this.props
-    const pickedImage = multiple ? this.state.picked : Map()
+    const pickedImage = multiple ? this.state.picked : []
     let newerPickedImage
 
-    if (pickedImage.has(image.value)) {
-      newerPickedImage = pickedImage.delete(image.value)
+    if (pickedImage.filter(item => item.src === image.src).length > 0) {
+      newerPickedImage = pickedImage.filter(item => item.src !== image.src );
     } else {
       if (typeof maxPicks === 'undefined') {
-        newerPickedImage = pickedImage.set(image.value, image.src)
+        pickedImage.push({ src: image.src })
+        newerPickedImage = pickedImage
       } else {
-        if (pickedImage.size < maxPicks) {
-          newerPickedImage = pickedImage.set(image.value, image.src)
+        if (pickedImage.length < maxPicks) {
+          pickedImage.push({ src: image.src })
+          newerPickedImage = pickedImage
         } else {
           onMaxPicks(image)
         }
@@ -37,29 +43,31 @@ class ImagePicker extends Component {
     if (newerPickedImage) {
       this.setState({picked: newerPickedImage})
 
-      const pickedImageToArray = []
-      newerPickedImage.map((image, i) => pickedImageToArray.push({src: image, value: i}))
-      
-      onPick(multiple ? pickedImageToArray : pickedImageToArray[0])
+      onPick(multiple ? newerPickedImage : newerPickedImage[0])
     }
+
+    return pickedImage.length
   }
 
   renderImage(image, i) {
+    let isSelected = this.state.picked.find(item => item.src === image.src);
+    let order = this.state.picked.indexOf(isSelected) + 1;
+
     return (
-      <Image 
+      <Image
         src={image.src}
-        isSelected={this.state.picked.has(image.value)} 
-        onImageClick={() => this.handleImageClick(image)} 
+        isSelected={this.state.picked.filter(item => item.src === image.src).length > 0}
+        onImageClick={() => this.handleImageClick(image)}
         key={i}
+        order={order}
       />
     )
   }
 
   render() {
-    const { images } = this.props
     return (
       <div className="image_picker">
-        { images.map(this.renderImage) }
+        { this.props.images.map(this.renderImage) }
         <div className="clear"/>
       </div>
     )
