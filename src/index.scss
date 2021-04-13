@@ -7,10 +7,59 @@
     float: left;
     opacity: 1;
 
-    @media (min-width: 2000px) {
+    .thumbnail {
+      width: 150;
+      height: 100;
+      opacity: 1;
+      margin: 0;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+      }
+    }
+
+     /* Screen larger than 600px? 2 column */
+      @media (min-width: 600px) {
+        .thumbnail {
+          width: calc(5vw + 10vh);
+          height: calc(6vw + 6vh);
+          opacity: 1;
+          margin: 0;
+          &:hover {
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+          }
+        }
+      }
+
+      /* Screen larger than 900px? 3 columns */
+      @media (min-width: 960px) {
+        .thumbnail {
+          width: calc(5vw + 10vh);
+          height: calc(6vw + 6vh);
+          opacity: 1;
+          margin: 0;
+          &:hover {
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+          }
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .thumbnail {
+          width: calc(5vw + 15vh);
+          height: calc(6vw + 6vh);
+          opacity: 1;
+          margin: 0;
+          &:hover {
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+          }
+        }
+      }
+
+
+    @media (min-width: 1200px) {
       .thumbnail {
-        width: calc(5vw + 11vh) !important;
-        height: calc(6vw + 6vh) !important;
+        width: calc(5vw + 20vh);
+        height: calc(6vw + 6vh);
         opacity: 1;
         margin: 0;
         &:hover {
@@ -19,16 +68,44 @@
       }
     }
 
-    .thumbnail {
-      width: calc(6vw + 11vh);
-      height: calc(6vw + 6vh);
-      opacity: 1;
-      margin: 0;
-      &:hover {
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+    @media (min-width: 1440px) {
+      .thumbnail {
+        width: calc(5vw + 8vh);
+        height: calc(6vw + 6vh);
+        opacity: 1;
+        margin: 0;
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+        }
       }
     }
 
+    @media (min-width: 1920px) {
+      .thumbnail {
+        width: calc(5vw + 12vh);
+        height: calc(6vw + 6vh);
+        opacity: 1;
+        margin: 0;
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+        }
+      }
+    }
+
+    @media (min-width: 2560px) {
+      .thumbnail {
+        width: calc(5vw + 19vh);
+        height: calc(6vw + 6vh);
+        opacity: 1;
+        margin: 0;
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+        }
+      }
+    }
+
+
+    
     .selected {
       background-color: rgba(0, 140, 186, 1);
     }
