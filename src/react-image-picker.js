@@ -1,27 +1,21 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Map } from 'immutable'
 
 import './index.scss'
 import Image from './components/image'
+import ImageMD from './components/ImageMd'
 
-class ImagePicker extends Component {
-  constructor(props) {
-    super(props)
+const defaltState = {
+  picked:[]
+}
+const ImagePicker = props => {
+  const selectedImages = props.images.filter(image => image.selected === true);
+  const [state, setState] = useState(defaltState)
 
-    const selectedImages = props.images.filter(image => image.selected === true);
-
-    this.state = {
-      picked: selectedImages || [],
-    }
-
-    this.handleImageClick = this.handleImageClick.bind(this)
-    this.renderImage = this.renderImage.bind(this)
-  }
-
-  handleImageClick(image) {
-    const { multiple, onPick, maxPicks, onMaxPicks } = this.props
-    const pickedImage = multiple ? this.state.picked : []
+  const handleImageClick = image => {
+    const { multiple, onPick, maxPicks, onMaxPicks } = props
+    const pickedImage = multiple ? state.picked : []
     let newerPickedImage
 
     if (pickedImage.filter(item => item.src === image.src).length > 0) {
@@ -41,7 +35,7 @@ class ImagePicker extends Component {
     }
 
     if (newerPickedImage) {
-      this.setState({picked: newerPickedImage})
+      setState({picked: newerPickedImage})
 
       onPick(multiple ? newerPickedImage : newerPickedImage[0])
     }
@@ -49,29 +43,12 @@ class ImagePicker extends Component {
     return pickedImage.length
   }
 
-  renderImage(image, i) {
-    let isSelected = this.state.picked.find(item => item.src === image.src);
-    let order = this.state.picked.indexOf(isSelected) + 1;
-
-    return (
-      <Image
-        src={image.src}
-        isSelected={this.state.picked.filter(item => item.src === image.src).length > 0}
-        onImageClick={() => this.handleImageClick(image)}
-        key={i}
-        order={order}
-      />
-    )
-  }
-
-  render() {
-    return (
-      <div className="image_picker">
-        { this.props.images.map(this.renderImage) }
-        <div className="clear"/>
-      </div>
-    )
-  }
+  return (
+    <div className="image_picker">
+        <ImageMD imagesList={props.images} />
+    </div>
+  )
+  
 }
 
 ImagePicker.propTypes = {
