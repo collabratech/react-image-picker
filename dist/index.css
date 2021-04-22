@@ -87,8 +87,6 @@
   .image_picker .responsive .content-overlay {
     background: #00000089;
     position: absolute;
-    height: 99%;
-    width: 100%;
     left: 0;
     top: 0;
     bottom: 0;
@@ -97,7 +95,10 @@
     -webkit-transition: all 0.4s ease-in-out 0s;
     -moz-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
-    border: 3px solid #26B4EC; }
+    border: 3px solid #26B4EC;
+    opacity: 1;
+    width: 98%;
+    height: 94%; }
   .image_picker .responsive:hover .content-overlay {
     opacity: 1; }
   .image_picker .content-details {
