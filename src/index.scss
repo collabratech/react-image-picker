@@ -134,8 +134,6 @@
   .responsive .content-overlay {
     background: #00000089;
     position: absolute;
-    height: 99%;
-    width: 100%;
     left: 0;
     top: 0;
     bottom: 0;
@@ -145,6 +143,8 @@
     -moz-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
     border: 3px solid #26B4EC;
+    width: 98%;
+    height: 94%;
   }
 
   .responsive:hover .content-overlay{
