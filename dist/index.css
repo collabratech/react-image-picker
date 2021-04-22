@@ -96,7 +96,6 @@
     -moz-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
     border: 3px solid #26B4EC;
-    opacity: 1;
     width: 98%;
     height: 94%; }
   .image_picker .responsive:hover .content-overlay {
