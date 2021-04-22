@@ -1,6 +1,6 @@
 {
   "name": "@collabratech/react-image-picker",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Picks images from gallery",
   "main": "dist/app.js",
   "scripts": {
